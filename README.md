@@ -28,3 +28,5 @@ This is the data set used for The Third International Knowledge Discovery and Da
 Irvine, CA 92697-3425
 
 Last modified: October 28, 1999
+
+Source: [http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html](http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html)
