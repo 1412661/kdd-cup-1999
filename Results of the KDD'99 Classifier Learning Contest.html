@@ -1,0 +1,363 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<!-- saved from url=(0044)http://cseweb.ucsd.edu/~elkan/clresults.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+
+   
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (X11; I; Linux 2.2.14-15mdksecure i686) [Netscape]"><title>Results of the KDD'99 Classifier Learning Contest</title></head><body alink="#ff0000" bgcolor="#ffffff" link="#0000ff" text="#000000" vlink="#ff0000">
+
+<center>
+<h1>
+Results of the KDD'99 Classifier Learning Contest</h1></center>
+
+<center>&nbsp;<a href="http://www.cs.ucsd.edu/users/elkan">Charles Elkan</a>
+<p>September 1999</p></center>
+
+<blockquote>&nbsp;</blockquote>
+<b><i>Important note:&nbsp;I&nbsp;have no other information about this
+topic.&nbsp; All information available to me is either below, or on a web
+page linked to this one.</i></b>
+<p>For the results of the other KDD'99 contest, the knowledge discovery
+contest, see <a href="http://www-cse.ucsd.edu/users/elkan/kdresults.html">here</a>.
+</p><p>The task for the classifier learning contest organized in conjunction
+with the KDD'99 conference was to learn a predictive model (i.e. a classifier)
+capable of distinguishing between legitimate and illegitimate connections
+in a computer network.&nbsp; Here is a <a href="http://kdd.ics.uci.edu/databases/kddcup99/task.html">detailed
+description</a> of the task.&nbsp; The training and test data were generously
+made available by Prof. <a href="http://www.cs.columbia.edu/~sal/">Sal
+Stolfo</a> of Columbia University and Prof. <a href="http://www.cs.columbia.edu/~wenke/">Wenke
+Lee</a> of North Carolina State University.&nbsp; (Update: The training
+and test datasets are now <a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">available</a>
+in the UC Irvine KDD archive.)
+</p><p>In total 24 entries were submitted for the contest.&nbsp; There was
+a data quality issue with the labels of the test data, which fortunately
+was discovered by Ramesh Agarwal (IBM Fellow) and <a href="http://www-users.cs.umn.edu/~mjoshi/">Mahesh
+Joshi</a> (University of Minnesota Ph.D. candidate) before results were
+announced publicly.&nbsp; Ramesh Agarwal and Mahesh Joshi have analyzed
+the data quality issue with great detail and precision, so we are confident
+that the <a href="http://www-cse.ucsd.edu/users/elkan/corrected.gz">test
+data with corrected labels</a> is now correct.&nbsp; Other participants
+also detected and analyzed the data quality issue, including Itzhak Levin
+of LLSoft, Inc.
+</p><p>It is important to note that the data quality issue affected only the
+labels of the test examples.&nbsp; The training data was unaffected, as
+was the unlabeled test data.&nbsp; Therefore it was not necessary to ask
+participants to submit recomputed entries.
+</p><p>Each entry was scored against the corrected test data by a <a href="http://www-cse.ucsd.edu/users/elkan/awkscript.html">scoring
+awk script</a> using the published cost matrix (see below) and the true
+labels of the test examples.
+<br>&nbsp;
+<br>&nbsp;
+</p><h4>
+THE WINNING ENTRIES</h4>
+The winning entry was submitted by Dr. <a href="http://www.ai.univie.ac.at/~bernhard/">Bernhard
+Pfahringer</a> of the <a href="http://www.ai.univie.ac.at/oefai/oefai.html">Austrian
+Research Institute for Artificial Intelligence</a>.&nbsp; The method used
+is described <a href="http://www.ai.univie.ac.at/~bernhard/kddcup99.html">here</a>.
+<p>Second-place performance was achieved by Itzhak Levin from LLSoft, Inc.
+using the tool Kernel Miner.&nbsp; For details see <a href="http://www.llsoft.com/kdd99cup.html">here</a>.
+</p><p>Third-place performance was achieved by Vladimir Miheev, Alexei Vopilov,
+and Ivan Shabalin of the company <a href="http://mp13.msk.ru/index_e.htm">MP13</a>
+in Moscow, Russia.&nbsp; For details see <a href="http://www-cse.ucsd.edu/users/elkan/mp13method.html">here</a>.
+</p><p>The difference in performance between the three best entries is only
+of marginal statistical significance; see below for a discussion of this
+question.&nbsp; Congratulations to all the winners and thanks to all the
+participants!
+<br>&nbsp;
+<br>&nbsp;
+</p><h4>
+PERFORMANCE OF THE WINNING ENTRY</h4>
+The winning entry achieved an average cost of 0.2331 per test example and
+obtained the following confusion matrix:
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; predicted&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp; %correct</tt>
+<br><tt>&nbsp;actual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --------------------------------------------------</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp; 60262&nbsp;&nbsp;&nbsp; 243&nbsp;&nbsp;&nbsp;&nbsp; 78&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 99.5%</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; 511&nbsp;&nbsp; 3471&nbsp;&nbsp;&nbsp; 184&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 83.3%</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp; 5299&nbsp;&nbsp; 1328 223226&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 97.1%</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; 168&nbsp;&nbsp;&nbsp;&nbsp; 20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp; 30&nbsp;&nbsp;&nbsp;&nbsp; 10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+13.2%</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp; 14527&nbsp;&nbsp;&nbsp; 294&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp; 1360&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+8.4%</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;%correct&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; 74.6%&nbsp;
+64.8%&nbsp; 99.9%&nbsp; 71.4%&nbsp; 98.8%</tt>
+</p><p>In the table above the five attack categories are numbered as follows:
+<br>&nbsp;
+</p><center><table border="1" width="50%">
+<tbody><tr>
+<td>0</td>
+
+<td>normal</td>
+</tr>
+
+<tr>
+<td>1</td>
+
+<td>probe</td>
+</tr>
+
+<tr>
+<td>2</td>
+
+<td>denial of service (DOS)</td>
+</tr>
+
+<tr>
+<td>3</td>
+
+<td>user-to-root (U2R)</td>
+</tr>
+
+<tr>
+<td>4</td>
+
+<td>remote-to-local (R2L)</td>
+</tr>
+</tbody></table></center>
+
+<p>Individual attack types were placed in the five categories using a <a href="http://www-cse.ucsd.edu/users/elkan/tabulate.html">categorization
+awk script</a>.
+</p><p>The top-left entry in the confusion matrix shows that 60262 of the actual
+"normal" test examples were predicted to be normal by this entry.&nbsp;
+The last column indicates that in total 99.5% of the actual "normal" examples
+were recognized correctly.&nbsp; The bottom row shows that 74.6% of test
+examples said to be "normal" were indeed "normal" in reality.
+<br>&nbsp;
+<br>&nbsp;
+</p><h4>
+STATISTICAL SIGNIFICANCE</h4>
+Non-winning entries obtained an average cost per test example ranging from
+0.2356 to 0.9414.&nbsp; In rank order, the average costs obtained by all
+24 entries are:
+<br>&nbsp;
+<center><table nosave="" border="1" cols="4" width="60%">
+<tbody><tr>
+<td><tt>0.2331</tt>
+<br><tt>0.2356</tt>
+<br><tt>0.2367</tt>
+<br><tt>0.2411</tt>
+<br><tt>0.2414</tt>
+<br><tt>0.2443</tt></td>
+
+<td><tt>0.2474</tt>
+<br><tt>0.2479</tt>
+<br><tt>0.2523</tt>
+<br><tt>0.2530</tt>
+<br><tt>0.2531</tt>
+<br><tt>0.2545</tt></td>
+
+<td><tt>0.2552</tt>
+<br><tt>0.2575</tt>
+<br><tt>0.2588</tt>
+<br><tt>0.2644</tt>
+<br><tt>0.2684</tt>
+<br><tt>0.2952</tt></td>
+
+<td><tt>0.3344</tt>
+<br><tt>0.3767</tt>
+<br><tt>0.3854</tt>
+<br><tt>0.3899</tt>
+<br><tt>0.5053</tt>
+<br><tt>0.9414</tt></td>
+</tr>
+</tbody></table></center>
+
+<p>It is difficult to evaluate exactly the statistical significance of
+differences between entries.&nbsp; However it is important not to read
+too much into differences that may well be statistically insignificant,
+i.e. due to randomness in the choice of training and test examples.
+</p><p>Statistical significance can be evaluated roughly as follows.&nbsp;
+The mean score of the winning entry as measured on the particular test
+set used is 0.2331, with a measured standard deviation of 0.8834.&nbsp;
+Assuming that the mean is computed from <i>N</i> independent observations,
+its standard error is 0.8334/sqrt(<i>N</i>).&nbsp; The test dataset contains
+311,029 examples, but these are not all independent.&nbsp; An upper bound
+on the number of independent test examples is the number of distinct test
+examples, which is 77291.&nbsp; The standard error of the winning mean
+score is then at least 0.8334/sqrt(77291) = 0.0030.
+</p><p>If the threshold for statistical significance is taken to be two standard
+errors, then the winning entry is significantly superior to all others
+except the second and third best.
+</p><p>The first significant difference between entries with adjacent ranks
+is between the 17th and 18th best entries.&nbsp; This difference is very
+large: 0.2952 - 0.2684 = 0.0268, which is about nine standard errors.&nbsp;
+One can conclude that the best 17 entries all performed well, while the
+worst 7 entries were definitely inferior.
+<br>&nbsp;
+<br>&nbsp;
+</p><h4>
+A SIMPLE METHOD PERFORMS WELL</h4>
+Most participants achieved results no better than those achievable with
+very simple methods.&nbsp; According to its author, one entry was simply
+"the trusty old 1-nearest neighbor classifier."&nbsp; This entry scored
+0.2523 with confusion matrix as follows:
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; predicted&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp; %correct</tt>
+<br><tt>&nbsp;actual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --------------------------------------------------</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp; 60322&nbsp;&nbsp;&nbsp; 212&nbsp;&nbsp;&nbsp;&nbsp; 57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 99.6%</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; 697&nbsp;&nbsp; 3125&nbsp;&nbsp;&nbsp; 342&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 75.0%</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp; 6144&nbsp;&nbsp;&nbsp;&nbsp; 76 223633&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 97.3%</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; 209&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3.5%</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp; 15785&nbsp;&nbsp;&nbsp; 308&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 95&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.6%</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;%correct&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; 72.5%&nbsp;
+83.9%&nbsp; 99.8%&nbsp; 88.9%&nbsp; 92.2%</tt>
+</p><p>Only nine entries scored better than 1-nearest neighbor, of which only
+six were statistically significantly better.&nbsp; Compared to 1-nearest
+neighbor, the main achievement of the winning entry is to recognize correctly
+many more "remote-to-local" attacks: 1360 compared to 95.&nbsp; This success
+is impressive, since only 0.23% of training examples were in this category
+compared to 5.20% of the test examples.&nbsp; The <a href="http://www.epsilon.com/kdd98/task.html">detailed
+task description</a> did point out that "It is important to note that the
+test data is not from the same probability distribution as the training
+data".
+<br>&nbsp;
+<br>&nbsp;
+</p><h4>
+COST-BASED SCORING AND TRAINING VS. TEST DISTRIBUTION</h4>
+The cost matrix used for scoring entries was given as
+<br>&nbsp;
+<center><table nosave="" border="1" width="60%">
+<tbody><tr>
+<td><br>
+</td>
+
+<td>normal</td>
+
+<td>probe</td>
+
+<td>DOS</td>
+
+<td>U2R</td>
+
+<td>R2L</td>
+</tr>
+
+<tr>
+<td>normal</td>
+
+<td>0</td>
+
+<td>1</td>
+
+<td>2</td>
+
+<td>2</td>
+
+<td>2</td>
+</tr>
+
+<tr nosave="">
+<td nosave="">probe</td>
+
+<td>1</td>
+
+<td>0</td>
+
+<td>2</td>
+
+<td>2</td>
+
+<td>2</td>
+</tr>
+
+<tr>
+<td>DOS</td>
+
+<td>2</td>
+
+<td>1</td>
+
+<td>0</td>
+
+<td>2</td>
+
+<td>2</td>
+</tr>
+
+<tr>
+<td>U2R</td>
+
+<td>3</td>
+
+<td>2</td>
+
+<td>2</td>
+
+<td>0</td>
+
+<td>2</td>
+</tr>
+
+<tr>
+<td>R2L</td>
+
+<td>4</td>
+
+<td>2</td>
+
+<td>2</td>
+
+<td>2</td>
+
+<td>0</td>
+</tr>
+</tbody></table></center>
+
+<p>Here, as in the confusion matrices above, columns correspond to predicted
+categories, while rows correspond to actual categories.&nbsp; The cost
+matrix says that the cost incurred by classifying all examples as "probe"
+is not much over 1.0, if the categories U2R and R2L are rare.&nbsp; These
+two categories are in fact rare in the training dataset, and the mean cost
+incurred by classifying all examples as "probe" is 0.994 on the training
+dataset.
+</p><p>Some basic domain knowledge about network intrusions suggests that the
+U2R and R2L categories are intrinsically rare.&nbsp; The actual distributions
+of attack types in the training and test 10% datasets are:
+</p><blockquote>
+<blockquote><tt>&nbsp; training&nbsp;&nbsp;&nbsp;&nbsp; test</tt>
+<p><tt>0: 19.69%&nbsp;&nbsp;&nbsp;&nbsp; 19.48%</tt>
+<br><tt>1:&nbsp; 0.83%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.34%</tt>
+<br><tt>2: 79.24%&nbsp;&nbsp;&nbsp;&nbsp; 73.90%</tt>
+<br><tt>3:&nbsp; 0.01%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.07%</tt>
+<br><tt>4:&nbsp; 0.23%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.20%</tt></p></blockquote>
+</blockquote>
+Together, the U2R and R2L attacks constitute 5.27% of the test dataset,
+which is a substantial increase compared to the training dataset, but still
+a small fraction.&nbsp; The mean cost incurred by classifying all test
+examples as "probe" is 0.5220 on the test dataset, which is better than
+the average cost achieved by the worst entry submitted.
+<br>&nbsp;
+<p><a href="mailto:elkan@cs.ucsd.edu">elkan@cs.ucsd.edu</a><br>
+<br>
+
+
+</p>
+</body></html>
