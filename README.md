@@ -22,9 +22,9 @@ This is the data set used for The Third International Knowledge Discovery and Da
 
 * * *
 
-<address>[The UCI KDD Archive](http://kdd.ics.uci.edu/)  
+[The UCI KDD Archive](http://kdd.ics.uci.edu/)
 [Information and Computer Science](http://www.ics.uci.edu/)  
 [University of California, Irvine](http://www.uci.edu/)  
-Irvine, CA 92697-3425</address>
+Irvine, CA 92697-3425
 
 Last modified: October 28, 1999
